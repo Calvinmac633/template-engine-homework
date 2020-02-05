@@ -123,7 +123,8 @@ async function init() {
               })
           }
         } // end of getInterns
-        getInterns();
+        // getInterns(); //
+        //Comment back out when working
       }); //End of if statement
 
   }
