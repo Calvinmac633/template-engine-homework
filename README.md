@@ -173,3 +173,22 @@ You are required to submit the following:
 
 - - -
 © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
+
+Q's
+
+node app.js
+
+Please build your team
+? What is your manager's name?
+? What is your managers ID
+? Man email
+? Office number
+?What Type of team member would you like to add
+- engineer
+- intern
+- I don't want to add any more team members
+? What is your engineer's name
+- eng id?
+- eng email
+- eng github
+?

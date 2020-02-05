@@ -1,8 +1,7 @@
 class Employee {
-    constructor(name, id, title, email, getName, getId, getEmail, getRole) {
+    constructor(name, id, email) {
       this.name = name;
       this.id = id;
-      this.title = title;
       this.email = email;
     }
     getName = function () {
@@ -21,6 +20,4 @@ class Employee {
   
 console.log(typeof(Employee))
 
-  module.exports = {
-    Employee,
-  };
+  module.exports = Employee
