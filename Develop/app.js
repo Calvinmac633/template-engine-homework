@@ -44,88 +44,60 @@ async function init() {
   if (teamMembers < 2) {
     await inquirer.prompt([
       {
-        type: "input",
-        message: "How many engineers would you like on your team?",
-        name: "numEngineers"
+        type: "list",
+        message: "What kind of employee would you like to add?",
+        name: "role",
+        choices: ["Engineer", "Intern", "Manager"]
       },
-      {
-        type: "input",
-        message: "How many interns would you like on your team?",
-        name: "numInterns"
-      }
-    ])
+    ])// end of prompt
       .then(answers => {
-        let numberOfEngineers = answers.numEngineers
-        let numberOfInterns = answers.numInterns
-        // return numberOfEngineers && numberOfInterns
-        console.log(numberOfEngineers)
-        console.log(numberOfInterns)
 
-        async function getEngineers() {
-          for (i = 0; i < numberOfEngineers; i++) {
-            await inquirer.prompt([
-              {
-                type: "input",
-                message: `What is engineer number ${[i] + 1} name?`,
-                name: "name"
-              },
-              {
-                type: "input",
-                message: `What is engineer number ${[i] + 1} id?`,
-                name: "id"
-              },
-              {
-                type: "input",
-                message: `What is engineer number ${[i] + 1} email?`,
-                name: "email"
-              },
-              {
-                type: "input",
-                message: `What is engineer number ${[i] + 1} github?`,
-                name: "github"
-              },
-            ])
-              .then(answers => {
-                const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
-                console.log(engineer)
-              })
-          }
-        } // end of getEngineers
-        getEngineers();
+        role = answers.role;
 
-        async function getInterns() {
-          for (i = 0; i < numberOfInterns; i++) {
-            await inquirer.prompt([
-              {
-                type: "input",
-                message: `What is intern number ${[i]+1} name?`,
-                name: "name"
-              },
-              {
-                type: "input",
-                message: `What is intern number ${[i]+1} id?`,
-                name: "id"
-              },
-              {
-                type: "input",
-                message: `What is intern number ${[i]+1} email?`,
-                name: "email"
-              },
-              {
-                type: "input",
-                message: `What is intern number ${[i]+1} school?`,
-                name: "school"
-              },
-            ])
-              .then(answers => {
-                const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-                console.log(intern)
-              })
-          }
-        } // end of getInterns
-        // getInterns(); //
-        //Comment back out when working
-      }); //End of if statement
+        switch (role) {
+          case "Engineer":
+            async function getEngineer() {
+              await inquirer.prompt([
+                {
+                  type: "input",
+                  message: "What is your Engineer's name?",
+                  name: "nameEngineer"
+                },
+                {
+                  type: "input",
+                  message: "What is your Engineer's ID?",
+                  name: "idEngineer"
+                },
+                {
+                  type: "input",
+                  message: "What is your Engineer's email address?",
+                  name: "emailEngineer"
+                },
+                {
+                  type: "input",
+                  message: "What is your Engineer's github?",
+                  name: "github"
+                },
+              ])
+                .then(answers => {
+                  const engineer = new Engineer(
+                    answers.nameEngineer,
+                    answers.idEngineer,
+                    answers.emailEngineer,
+                    answers.github)
+                  console.log(engineer)
+                  // let teamMember
+                })
+            }//end of getEngineer
+            getEngineer()
+            break;
+          case "Intern":
+            break
+          case "Manager":
+            break
+        }
+
+      }); //End of if and .then statement
 
   }
 
